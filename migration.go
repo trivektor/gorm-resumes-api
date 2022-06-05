@@ -17,5 +17,12 @@ dsn := "host=localhost user=root password=root dbname=postgres port=5432"
 		log.Fatalln(err)
 	}
 
-	db.AutoMigrate(&models.Resume{}, &models.Education{}, &models.Position{})
+	db.AutoMigrate(
+		&models.Resume{}, 
+		&models.Intro{},
+		&models.Education{}, 
+		&models.Position{},
+		&models.Reference{},
+		&models.Skill{},
+	)
 }
