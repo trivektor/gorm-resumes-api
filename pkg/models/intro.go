@@ -6,9 +6,7 @@ import (
 
 type Intro struct {
 	gorm.Model
-	ResumeId int32 `json:"resume_id"`
-	Resume Resume
-	Id int32 `json:"id"`
+	ResumeID int32 `json:"resume_id"`
 	FirstName string `json:"first_name"`
 	LastName string `json:"last_name"`
 	Headline string `json:"headline"`

@@ -6,8 +6,7 @@ import (
 
 type Reference struct {
 	gorm.Model
-	ResumeId int32 `json:"resume_id"`
-	Resume Resume
+	ResumeID int32 `json:"resume_id"`
 	Id int32 `json:"id"`
 	FullName string `json:"full_name"`
 	Company string `json:"company"`

@@ -6,8 +6,7 @@ import (
 
 type Position struct {
 	gorm.Model
-	ResumeId int32 `json:"resume_id"`
-	Resume Resume
+	ResumeID int32 `json:"resume_id"`
 	Title string `json:"title"`
 	CompanyName string `json:"company_name"`
 	Description string `json:"description"`
