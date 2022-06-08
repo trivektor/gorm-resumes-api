@@ -2,6 +2,7 @@ package main
 
 import (
 	"log"
+	"net/http"
 
 	"github.com/gorilla/mux"
 	"github.com/trivektor/gorm-resumes-api/pkg/database"
@@ -26,4 +27,7 @@ func main() {
 	r.HandleFunc("/resumes/{id}", handlers.GetResume).Methods("GET")
 	r.HandleFunc("/resumes/{id}", handlers.UpdateResume).Methods("PATCH")
 	r.HandleFunc("/resumes/{id}", handlers.DeleteResume).Methods("DELETE")
+
+	http.Handle("/", r)
+	http.ListenAndServe(":8080", r)
 }
