@@ -18,7 +18,11 @@ func CreateResume(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	resume := models.Resume{Title: input.Title, Description: input.Description}
+	resume := models.Resume{
+		Title: input.Title, 
+		Description: input.Description,
+		Intro: &models.Intro{},
+	}
 
 	result := database.DB.Create(&resume)
 
@@ -27,7 +31,7 @@ func CreateResume(w http.ResponseWriter, r *http.Request) {
 	}
 
 	response := make(map[string]int)
-	response["resume_id"] = int(resume.Id)
+	response["resume_id"] = int(resume.ID)
 
 	jsonResponse, err := json.Marshal(response)
 
@@ -50,7 +54,13 @@ func GetResume(w http.ResponseWriter, r *http.Request) {
 }
 
 func UpdateResume(w http.ResponseWriter, r *http.Request) {
+	var input UpdateResumeInput
+	err := json.NewDecoder(r.Body).Decode(&input)
 
+	if err != nil {
+		w.WriteHeader(422)
+		return
+	}
 }
 
 func DeleteResume(w http.ResponseWriter, r *http.Request) {
